@@ -1,5 +1,6 @@
 import * as React from "react";
 import { View, Text } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function App() {
   return (
@@ -10,7 +11,8 @@ export default function App() {
         alignItems: "center",
       }}
     >
-      <Text>Universal React with Expo</Text>
+      <Text>UdaciFitness App</Text>
+      <FontAwesome5 name="pizza-slice" size={24} color="red" />
     </View>
   );
 }
