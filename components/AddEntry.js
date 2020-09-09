@@ -14,7 +14,7 @@ import {
 } from "../utils/helpers";
 import UdaciSlider from "./UdaciSlider";
 import UdaciSteppers from "./UdaciSteppers";
-import DateHeader from "./DateHeader";
+// import DateHeader from "./DateHeader";
 import { Ionicons } from "@expo/vector-icons";
 import TextButton from "./TextButton";
 import { submitEntry, removeEntry } from "../utils/api";
@@ -76,7 +76,7 @@ class AddEntry extends Component {
 
   submit = () => {
     const key = timeToString();
-    const entry = this.state;
+    const entry = [this.state];
 
     // Update Redux
     this.props.dispatch(
@@ -136,7 +136,7 @@ class AddEntry extends Component {
 
     return (
       <View style={styles.container}>
-        <DateHeader date={new Date().toLocaleDateString()} />
+        {/* <DateHeader date={new Date().toLocaleDateString()} /> */}
         {Object.keys(metaInfo).map((key) => {
           const { getIcon, type, ...rest } = metaInfo[key];
           const value = this.state[key];
