@@ -213,9 +213,9 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   const key = timeToString();
-  console.log("key: ", key);
-  console.log("1 ", state[key]);
-  console.log("newState ", state);
+  // console.log("key: ", key);
+  // console.log("1 ", state[key]);
+  // console.log("newState ", state);
   return {
     alreadyLogged: state[key] && !state[key].today,
   };

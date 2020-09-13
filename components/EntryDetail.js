@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import { connect } from "react-redux";
+import { white } from "../utils/colors";
+import MetricCard from "../components/MetricCard";
 
 class EntryDetail extends Component {
   setTitle = (entryId) => {
@@ -18,11 +21,29 @@ class EntryDetail extends Component {
     const { entryId } = this.props.route.params;
     this.setTitle(entryId);
     return (
-      <View>
+      <View style={styles.container}>
+        <MetricCard metrics={this.props.metrics[0]} />
         <Text>Entry Detail - {this.props.route.params.entryId}</Text>
       </View>
     );
   }
 }
 
-export default EntryDetail;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: white,
+    padding: 15,
+  },
+});
+
+function mapStateToProps(state, { route }) {
+  const { entryId } = route.params;
+  console.log("2 ", state[entryId][0]);
+  return {
+    entryId,
+    metrics: state[entryId],
+  };
+}
+
+export default connect(mapStateToProps)(EntryDetail);

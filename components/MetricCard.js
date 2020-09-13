@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from "react-native";
 import { getMetricMetaInfo } from "../utils/helpers";
 import { gray } from "../utils/colors";
 
-export default function MetricCard({ date, metrics }) {
+export default function MetricCard({ metrics }) {
   return (
     <View>
       {Object.keys(metrics).map((metric) => {
