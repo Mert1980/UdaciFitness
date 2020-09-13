@@ -5,7 +5,7 @@ class EntryDetail extends Component {
   render() {
     return (
       <View>
-        <Text>Entry Detail - {console.log(this.props)}</Text>
+        <Text>Entry Detail - {this.props.route.params.entryId}</Text>
       </View>
     );
   }

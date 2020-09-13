@@ -217,7 +217,7 @@ function mapStateToProps(state) {
   console.log("1 ", state[key]);
   console.log("newState ", state);
   return {
-    alreadyLogged: state[key] && typeof state[key].today === "undefined",
+    alreadyLogged: state[key] && !state[key].today,
   };
 }
 
