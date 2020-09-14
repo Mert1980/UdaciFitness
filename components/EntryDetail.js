@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { CommonActions } from "@react-navigation/native";
 import { connect } from "react-redux";
 import { white } from "../utils/colors";
 import MetricCard from "../components/MetricCard";
@@ -74,7 +75,7 @@ function mapDispatchToProps(dispatch, { navigation, route }) {
             entryId === timeToString() ? getDailyReminderValue() : new Array(),
         })
       ),
-    goBack: () => navigation.goBack(),
+    goBack: () => navigation.dispatch(CommonActions.goBack()),
   };
 }
 

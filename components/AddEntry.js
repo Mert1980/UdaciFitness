@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from "react-native";
+import { CommonActions } from "@react-navigation/native";
 import {
   getMetricMetaInfo,
   timeToString,
@@ -94,6 +95,7 @@ class AddEntry extends Component {
     }));
 
     // Navigate to Home
+    this.toHome();
 
     // Save to DB
     submitEntry({ key, entry });
@@ -112,13 +114,23 @@ class AddEntry extends Component {
     );
 
     // Route to Home
+    this.toHome();
 
     // Update "DB"
     removeEntry(key);
   };
+
+  toHome = () => {
+    this.props.navigation.dispatch(
+      CommonActions.goBack({
+        name: "AddEntry",
+      })
+    );
+  };
+
   render() {
     const metaInfo = getMetricMetaInfo();
-
+    console.log("alreadylogged ", this.props.alreadyLogged);
     if (this.props.alreadyLogged) {
       return (
         <View style={styles.center}>
@@ -140,7 +152,6 @@ class AddEntry extends Component {
         {Object.keys(metaInfo).map((key) => {
           const { getIcon, type, ...rest } = metaInfo[key];
           const value = this.state[key];
-
           return (
             <View key={key} style={styles.row}>
               {getIcon()}
@@ -213,12 +224,16 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   const key = timeToString();
-  // console.log("key: ", key);
-  // console.log("1 ", state[key]);
-  // console.log("newState ", state);
+  console.log("1 ", state[key]);
   return {
-    alreadyLogged: state[key] && !state[key].today,
+    alreadyLogged: state[key] && typeof state[key][0].today === "undefined",
   };
 }
 
-export default connect(mapStateToProps)(AddEntry);
+function mapDispatchToProps(dispatch, { navigation }) {
+  return {
+    dispatch,
+    goBack: () => navigation.dispatch(CommonActions.goBack()),
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(AddEntry);
