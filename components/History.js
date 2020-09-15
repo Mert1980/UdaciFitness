@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { connect } from "react-redux";
-import { receiveEntries, addEntry } from "../actions";
+import { receiveEntries, addEntry, selectDate } from "../actions";
 import { timeToString, getDailyReminderValue } from "../utils/helpers";
 import { fetchCalendarResults } from "../utils/api";
 import { Agenda as UdaciFitnessCalendar } from "react-native-calendars";
@@ -63,6 +63,7 @@ class History extends Component {
     this.setState({
       selectedDate: day.dateString,
     });
+    // this.props.dispatch(selectDate(day.dateString));
   };
 
   renderEmptyDate(formattedDate) {
@@ -123,5 +124,12 @@ function mapStateToProps(entries) {
     entries,
   };
 }
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     dispatch,
+//     selectDate: () => dispatch(selectDate(this.state.selectedDate)),
+//   };
+// }
 
 export default connect(mapStateToProps)(History);

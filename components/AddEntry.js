@@ -76,6 +76,7 @@ class AddEntry extends Component {
   };
 
   submit = () => {
+    // const key = this.props.date;
     const key = timeToString();
     const entry = [this.state];
 
@@ -104,8 +105,8 @@ class AddEntry extends Component {
   };
 
   reset = () => {
+    // const key = this.props.date;
     const key = timeToString();
-
     // Update Redux
     this.props.dispatch(
       addEntry({
@@ -149,23 +150,23 @@ class AddEntry extends Component {
     return (
       <View style={styles.container}>
         {/* <DateHeader date={new Date().toLocaleDateString()} /> */}
-        {Object.keys(metaInfo).map((key) => {
-          const { getIcon, type, ...rest } = metaInfo[key];
-          const value = this.state[key];
+        {Object.keys(metaInfo).map((item) => {
+          const { getIcon, type, ...rest } = metaInfo[item];
+          const value = this.state[item];
           return (
-            <View key={key} style={styles.row}>
+            <View key={item} style={styles.row}>
               {getIcon()}
               {type === "slider" ? (
                 <UdaciSlider
                   value={value}
-                  onChange={(value) => this.slide(key, value)}
+                  onChange={(value) => this.slide(item, value)}
                   {...rest}
                 />
               ) : (
                 <UdaciSteppers
                   value={value}
-                  onIncrement={() => this.increment(key)}
-                  onDecrement={() => this.decrement(key)}
+                  onIncrement={() => this.increment(item)}
+                  onDecrement={() => this.decrement(item)}
                   {...rest}
                 />
               )}
@@ -224,7 +225,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   const key = timeToString();
-  console.log("1 ", state[key]);
+
   return {
     alreadyLogged: state[key] && typeof state[key][0].today === "undefined",
   };

@@ -66,6 +66,7 @@ function mapStateToProps(state, { route }) {
 
 function mapDispatchToProps(dispatch, { navigation, route }) {
   const { entryId } = route.params;
+  // console.log("entryId ", entryId);
 
   return {
     remove: () =>
