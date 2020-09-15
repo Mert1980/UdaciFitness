@@ -14,6 +14,7 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { orange, white } from "./utils/colors";
 import Constants from "expo-constants";
 import EntryDetail from "./components/EntryDetail";
+import Live from "./components/Live";
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
@@ -38,6 +39,8 @@ const TabNav = () => (
           icon = <FontAwesome name="plus-square" size={size} color={color} />;
         } else if (route.name === "History") {
           icon = <Ionicons name="ios-bookmarks" size={size} color={color} />;
+        } else if (route.name === "Live") {
+          icon = <Ionicons name="ios-speedometer" size={size} color={color} />;
         }
         return icon;
       },
@@ -61,6 +64,7 @@ const TabNav = () => (
   >
     <Tabs.Screen name="Add Entry" component={AddEntry} />
     <Tabs.Screen name="History" component={History} />
+    <Tabs.Screen name="Live" component={Live} />
   </Tabs.Navigator>
 );
 
