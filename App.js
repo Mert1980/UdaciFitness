@@ -15,7 +15,9 @@ import { orange, white } from "./utils/colors";
 import Constants from "expo-constants";
 import EntryDetail from "./components/EntryDetail";
 import Live from "./components/Live";
+import { YellowBox } from "react-native";
 
+YellowBox.ignoreWarnings(["Animated: `useNativeDriver` was not specified."]);
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
