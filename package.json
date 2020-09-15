@@ -21,7 +21,8 @@
     "redux": "^4.0.5",
     "udacifitness-calendar": "github:ftrevo/react-native-calendars#master",
     "expo-permissions": "~9.0.1",
-    "expo-location": "~8.2.1"
+    "expo-location": "~8.2.1",
+    "expo-notifications": "~0.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
