@@ -1,4 +1,4 @@
-import { RECEIVE_ENTRIES, ADD_ENTRY, SELECT_DATE } from "../actions/index";
+import { RECEIVE_ENTRIES, ADD_ENTRY } from "../actions/index";
 
 function entries(state = {}, action) {
   switch (action.type) {
@@ -12,11 +12,6 @@ function entries(state = {}, action) {
         ...state,
         ...action.entry,
       };
-    // case SELECT_DATE:
-    //   return {
-    //     ...state,
-    //     date: action.date,
-    //   };
     default:
       return state;
   }

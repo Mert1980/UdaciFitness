@@ -1,6 +1,5 @@
 export const RECEIVE_ENTRIES = "RECEIVE_ENTRIES";
 export const ADD_ENTRY = "ADD_ENTRY";
-export const SELECT_DATE = "SELECT_DATE";
 
 export function receiveEntries(entries) {
   return {
@@ -14,13 +13,5 @@ export function addEntry(entry) {
   return {
     type: ADD_ENTRY,
     entry,
-  };
-}
-
-export function selectDate(date) {
-  console.log("date ", date);
-  return {
-    type: SELECT_DATE,
-    date,
   };
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { CommonActions } from "@react-navigation/native";
 import { connect } from "react-redux";
 import { white } from "../utils/colors";
@@ -7,7 +7,6 @@ import MetricCard from "../components/MetricCard";
 import { addEntry } from "../actions";
 import { removeEntry } from "../utils/api";
 import { timeToString, getDailyReminderValue } from "../utils/helpers";
-import AddEntry from "./AddEntry";
 import TextButton from "../components/TextButton";
 
 class EntryDetail extends Component {
@@ -66,7 +65,6 @@ function mapStateToProps(state, { route }) {
 
 function mapDispatchToProps(dispatch, { navigation, route }) {
   const { entryId } = route.params;
-  // console.log("entryId ", entryId);
 
   return {
     remove: () =>

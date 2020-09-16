@@ -17,7 +17,6 @@ import {
 } from "../utils/helpers";
 import UdaciSlider from "./UdaciSlider";
 import UdaciSteppers from "./UdaciSteppers";
-// import DateHeader from "./DateHeader";
 import { Ionicons } from "@expo/vector-icons";
 import TextButton from "./TextButton";
 import { submitEntry, removeEntry } from "../utils/api";
@@ -78,7 +77,6 @@ class AddEntry extends Component {
   };
 
   submit = () => {
-    // const key = this.props.date;
     const key = timeToString();
     const entry = [this.state];
 
@@ -108,7 +106,6 @@ class AddEntry extends Component {
   };
 
   reset = () => {
-    // const key = this.props.date;
     const key = timeToString();
     // Update Redux
     this.props.dispatch(
@@ -134,7 +131,7 @@ class AddEntry extends Component {
 
   render() {
     const metaInfo = getMetricMetaInfo();
-    console.log("alreadylogged ", this.props.alreadyLogged);
+
     if (this.props.alreadyLogged) {
       return (
         <View style={styles.center}>
@@ -152,7 +149,6 @@ class AddEntry extends Component {
 
     return (
       <View style={styles.container}>
-        {/* <DateHeader date={new Date().toLocaleDateString()} /> */}
         {Object.keys(metaInfo).map((item) => {
           const { getIcon, type, ...rest } = metaInfo[item];
           const value = this.state[item];
