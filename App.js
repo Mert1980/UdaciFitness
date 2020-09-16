@@ -15,6 +15,7 @@ import { orange, white } from "./utils/colors";
 import Constants from "expo-constants";
 import EntryDetail from "./components/EntryDetail";
 import Live from "./components/Live";
+import { setLocalNotification } from "./utils/helpers";
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
@@ -91,6 +92,9 @@ const MainNav = () => (
 );
 
 export default function App() {
+  React.useEffect(() => {
+    setLocalNotification();
+  });
   return (
     <Provider store={createStore(reducer)}>
       <View style={{ flex: 1 }}>

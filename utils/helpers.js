@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, AsyncStorage } from "react-native";
 import {
   FontAwesome,
   MaterialIcons,
@@ -183,15 +183,37 @@ export function setLocalNotification() {
           if (status === "granted") {
             Notifications.cancelAllScheduledNotificationsAsync();
 
-            let tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
+            let tomorrow = new Date() + 1;
+            tomorrow.setDate(tomorrow.getDate());
             tomorrow.setHours(20);
             tomorrow.setMinutes(0);
 
-            Notifications.scheduleLocalNotificationAsync(createNotification(), {
-              time: tomorrow,
-              repeat: "day",
-            });
+            // Notifications.scheduleLocalNotificationAsync({
+            //   content: {
+            //     title: "Remember to log your goal today!",
+            //   },
+            //   trigger: {
+            //     seconds: 60,
+            //     repeats: true,
+            //   },
+            // });
+            Notifications.scheduleLocalNotificationAsync(
+              {
+                title: "Log your stats!",
+                body: "👋 don't forget to log your stats for today!",
+                ios: {
+                  sound: true,
+                },
+                android: {
+                  sound: true,
+                  sticky: false,
+                },
+              },
+              {
+                time: tomorrow.getTime() + 6000, // almost every minute it should show the notification
+                repeat: "minute",
+              }
+            );
 
             AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
           }
