@@ -1,4 +1,4 @@
-# My Universal React Project
+# Fitness App - React Native Project
 
 <p>
   <!-- iOS -->
